@@ -1,0 +1,14 @@
+version: '3'
+services:
+  testnet:
+    build: testnet
+    restart: on-failure
+    container_name: testnet
+    hostname: testnet
+    ports:
+      - "8545:8545"
+    networks:
+      - net
+networks:
+  net:
+    driver: bridge
