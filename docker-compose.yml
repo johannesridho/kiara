@@ -1,5 +1,18 @@
 version: '3'
 services:
+  backend:
+    build: backend
+    restart: on-failure
+    container_name: backend
+    hostname: backend
+    links:
+      - testnet
+    depends_on:
+      - testnet
+    environment:
+      - ETH_HOST=http://testnet:8545
+    ports:
+      - "3000:3000"
   testnet:
     build: testnet
     restart: on-failure
