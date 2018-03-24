@@ -9,18 +9,58 @@ contract SmartContract {
         bytes32 data;
     }
 
+    struct Submission {
+        uint houseId;
+        bytes32 status;
+        uint256 price;
+        uint256 monthlyInstallment;
+    }
+
+    struct Transaction {
+        address accountAddress;
+        uint256 amount;
+        uint houseId;
+        uint256 remainingDebt;
+        uint256 price;
+    }
+
     mapping (address => Ownership[]) public ownerships;
+    mapping (address => Submission[]) public submissions;
+    Transaction[] public transactions;
 
     function SmartContract() {}
 
-    function addOwnerships(uint houseId, bytes32 data) {
+    function addOwnership(uint houseId, bytes32 data) {
         ownerships[msg.sender].push(Ownership({
             houseId: houseId,
             data: data
         }));
     }
 
-    function getOwnerships(address account) public constant returns (Ownership[]) {
-        return ownerships[account];
+    function getOwnerships() public constant returns (Ownership[]) {
+        return ownerships[msg.sender];
+    }
+
+    function addSubmission(uint houseId, bytes32 status, uint256 price, uint256 monthlyInstallment) {
+        submissions[msg.sender].push(Submission({
+            houseId: houseId,
+            status: status,
+            price: price,
+            monthlyInstallment: monthlyInstallment
+        }));
+    }
+
+    function getSubmissions() public constant returns (Submission[]) {
+        return submissions[msg.sender];
+    }
+
+    function addTransaction(address accountAddress, uint256 amount, uint houseId, uint256 remainingDebt, uint256 price) {
+        transactions.push(Transaction({
+            accountAddress: accountAddress,
+            amount: amount,
+            houseId: houseId,
+            remainingDebt: remainingDebt,
+            price: price
+        }));
     }
 }
