@@ -20,9 +20,9 @@ HouseService.prototype.transform = (house) => {
   return newHouse
 }
 
-HouseService.prototype.list = (keyword) => {
+HouseService.prototype.list = (keyword, isTest) => {
   return HouseRepo
-    .list(keyword)
+    .list(keyword, isTest)
     .then((houses) => houses.map(HouseService.prototype.transform).slice(0, 10))
 }
 

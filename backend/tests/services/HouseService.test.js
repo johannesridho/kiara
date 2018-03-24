@@ -7,11 +7,10 @@ describe('HouseService', function () {
 
   it('list', function () {
     const keyword = 'jakarta'
-    const result = HouseService.list(keyword)
-    HouseService
-      .list(keyword)
+    return HouseService
+      .list(keyword, true)
       .then((houses) => {
-        houses
+        return houses
           .forEach(r => {
             assert('images' in r)
             assert('id_stk_kavling' in r)

@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 router.get('/list/:keyword', function(req, res) {
   const keyword = req.params.keyword
   HouseService
-    .list(keyword)
+    .list(keyword, false)
     .then((houses) => {
       return res.send({
         result: houses
