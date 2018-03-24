@@ -27,4 +27,22 @@ describe('TransactionService', function () {
       })
   })
 
+  it('get transaction success', function () {
+    const payload = {
+     "transaction_id": "6"
+    }
+    return TransactionService
+      .getTransaction(payload, true)
+      .then((result) => {
+        assert('id' in result)
+        assert('customer_id' in result)
+        assert('amount' in result)
+        assert('timestamp' in result)
+        assert('house_id' in result)
+        assert('house_price' in result)
+        assert('remaining' in result)
+        assert.equal(result.id, payload.transaction_id)
+      })
+  })
+
 })

@@ -17,4 +17,13 @@ router.post('/', function(req, res) {
     .then((result) => res.send({result: result}))
 })
 
+router.get('/:transaction_id', function(req, res) {
+  const payload = {
+   "transaction_id": req.params.transaction_id
+  }
+  return TransactionService
+    .getTransaction(payload, true)
+    .then((result) => res.send({result: result}))
+})
+
 module.exports = router
