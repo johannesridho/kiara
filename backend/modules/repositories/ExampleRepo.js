@@ -1,5 +1,5 @@
 const Promise = require('bluebird')
-const mysql = require('mysql')
+// const mysql = require('mysql')
 
 const CONFIG = require('../config')
 
