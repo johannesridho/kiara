@@ -8,7 +8,12 @@ var SubmissionService = function () {}
 SubmissionService.prototype.submit = (payload, isTest) => {
   if (isTest) {
       const result = {
-        "kode_booking" : "6666666666"
+        "id" : "6",
+        "customer_id" : payload.customer_id,
+        "house_id" : payload.house_id,
+        "house_price" : payload.house_price,
+        "status" : "pending",
+        "amount" : "100"
       }
       return new Promise((resolve, reject) => resolve(result))
     } else {
@@ -24,7 +29,7 @@ SubmissionService.prototype.submit = (payload, isTest) => {
         .then((response) => response.data.payload)
         .catch((error) => {
           error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
-          return {'kode_booking': null}
+          return {}
         })
     }
 }
@@ -67,6 +72,7 @@ SubmissionService.prototype.approve = (payload, isTest) => {
         "house_price" : "100000000",
         "status" : "approved",
         "amount" : "1000000",
+        "kode_booking" : ""
       }
       return new Promise((resolve, reject) => resolve(result))
     } else {
