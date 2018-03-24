@@ -13,17 +13,15 @@ if (CONFIG.logger.isFile) {
     .push(new (winston.transports.File)({ filename: '/tmp/news-scrape.log' }))
 }
 
-if (CONFIG.logger.isPapertrail) {
-  loggerConfig.transports
-    .push(new Papertrail({
-      host: CONFIG.logger.papertrail.host,
-      port: CONFIG.logger.papertrail.port,
-      colorize: true
-    }))
-}
+// if (CONFIG.logger.isPapertrail) {
+//   loggerConfig.transports
+//     .push(new Papertrail({
+//       host: CONFIG.logger.papertrail.host,
+//       port: CONFIG.logger.papertrail.port,
+//       colorize: true
+//     }))
+// }
 
 const logger = new (winston.Logger)(loggerConfig)
 
-module.exports = {
-  'logger': logger,
-}
+module.exports = logger

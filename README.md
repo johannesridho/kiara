@@ -1,47 +1,4 @@
-# kiara
-
-## Credit API
-
-```[get] /credit/simulate```
-
-```json
-{
-   "nilai_pinjaman": "100000000",
-   "interest": "10",
-   "jangka_waktu": 1
-}
-```
-
-```json
-{
-  "result": {
-    "angsuran_perbulan": "100833333.33"
-  }
-}
-```
-
-```[get] /credit/submit```
-
-```json
-{
-   "nik": "1234567891234567",
-   "nama": "Ade",
-   "tgl_lahir": "01-01-2018",
-   "nama_ibu_kandung": "ibu",
-   "pendapatan": 10000,
-   "email": "ade@yahoo.com",
-   "nomor_hp": "082123155617",
-   "nomor_cif": "1116635e"
-}
-```
-
-```json
-{
-  "result": {
-    "kode_booking": "1234556784"
-  }
-}
-```
+# KIARA
 
 ## House API
 
@@ -123,5 +80,62 @@
       "desa_kelurahan": "kalibata"
     }
   ]
+}
+```
+
+## Submission API
+
+```[post] /submission/```
+
+```json
+{
+  "nik": "6666666666666666",
+  "nama": "eric",
+  "tgl_lahir": "01-01-2018",
+  "nama_ibu_kandung": "cartman",
+  "pendapatan": 1000000,
+  "email": "eric@cartman.com",
+  "nomor_hp": "081666666666",
+  "nomor_cif": "i5548261"
+}
+```
+
+```json
+{
+  "kode_booking" : "6666666666"
+}
+```
+
+```[get] /submission/customer/:customer_id```
+
+```
+[get] /submission/customer/6666666666666666
+```
+
+```json
+{
+  "id" : "6",
+  "customer_id" : "6666666666666666",
+  "house_id" : "666",
+  "house_price" : "100000000",
+  "status" : "pending",
+  "amount" : "1000000",
+}
+```
+
+```[patch] /submission/:submission_id/approve```
+
+```
+[patch] /submission/6/approve
+```
+
+```json
+{
+  "id" : "6",
+  "customer_id" : "6666666666666666",
+  "house_id" : "666",
+  "house_price" : "100000000",
+  "status" : "approved",
+  "amount" : "1000000",
 }
 ```
