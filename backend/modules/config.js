@@ -2,6 +2,9 @@ require('dotenv').config()
 
 const config = {
   server: {},
+  eth: {
+    host: process.env.ETH_HOST || 'http://localhost:8545',
+  },
   db: {
     host: process.env.DB_HOST || '',
     port: process.env.DB_PORT || '',
