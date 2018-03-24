@@ -7,12 +7,9 @@ describe('TransactionService', function () {
 
   it('post transaction success', function () {
     const payload = {
-     "customer_id": "6666666666666666",
-     "house_id": "666",
-     "house_price": "100000000",
-     "amount": "1000000",
-     "remaining": "99000000",
-     "timestamp": "",
+      "customer_id": "6666666666666666",
+      "house_id": "666",
+      "amount": "1000000",
     }
     return TransactionService
       .submit(payload, true)
@@ -29,7 +26,7 @@ describe('TransactionService', function () {
 
   it('get transaction success', function () {
     const payload = {
-     "transaction_id": "6",
+      "transaction_id": "6",
     }
     return TransactionService
       .getTransaction(payload, true)
@@ -47,8 +44,8 @@ describe('TransactionService', function () {
 
   it('get transaction by customer id + house id success', function () {
     const payload = {
-     "house_id": "6",
-     "customer_id": "6666666666666666",
+      "house_id": "6",
+      "customer_id": "6666666666666666",
     }
     return TransactionService
       .getByCustomerHouseId(payload, true)

@@ -12,8 +12,8 @@ router.post('/', function(req, res) {
 
 router.get('/', function(req, res) {
   const payload = {
-   "house_id": req.query.house_id,
-   "customer_id": req.query.customer_id
+    "house_id": req.query.house_id,
+    "customer_id": req.query.customer_id
   }
   return TransactionService
     .getByCustomerHouseId(payload, true)
@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
 
 router.get('/:transaction_id', function(req, res) {
   const payload = {
-   "transaction_id": req.params.transaction_id
+    "transaction_id": req.params.transaction_id
   }
   return TransactionService
     .getTransaction(payload, true)

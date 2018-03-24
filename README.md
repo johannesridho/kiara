@@ -119,7 +119,7 @@
   "house_id" : "666",
   "house_price" : "100000000",
   "status" : "pending",
-  "amount" : "1000000",
+  "amount" : "1000000"
 }
 ```
 
@@ -136,6 +136,66 @@
   "house_id" : "666",
   "house_price" : "100000000",
   "status" : "approved",
-  "amount" : "1000000",
+  "amount" : "1000000"
+}
+```
+
+## Transaction API
+
+```[post] /transaction/```
+
+```json
+{
+  "customer_id": "6666666666666666",
+  "house_id": "666",
+  "amount": "1000000"
+}
+```
+
+```json
+{
+  "id": "6",
+  "customer_id": "6666666666666666",
+  "house_id": "666",
+  "house_price": "100000000",
+  "amount": "1000000",
+  "remaining": "99000000",
+  "timestamp": ""
+}
+```
+
+```[get] /transaction/:transaction_id```
+
+```
+[get] /transaction/6
+```
+
+```json
+{
+  "id": "6",
+  "customer_id": "6666666666666666",
+  "house_id": "666",
+  "house_price": "100000000",
+  "amount": "1000000",
+  "remaining": "99000000",
+  "timestamp": ""
+}
+```
+
+```[get] /transaction?customer_id=6666&house_id=6```
+
+```
+[get] /transaction?customer_id=6666&house_id=6
+```
+
+```json
+{
+  "id": "6",
+  "customer_id": "6666",
+  "house_id": "6",
+  "house_price": "100000000",
+  "amount": "1000000",
+  "remaining": "99000000",
+  "timestamp": ""
 }
 ```

@@ -8,13 +8,13 @@ var TransactionService = function () {}
 TransactionService.prototype.submit = (payload, isTest) => {
   if (isTest) {
       const result = {
-       "id": "6",
-       "customer_id": "6666666666666666",
-       "house_id": "666",
-       "house_price": "100000000",
-       "amount": "1000000",
-       "remaining": "99000000",
-       "timestamp": ""
+        "id": "6",
+        "customer_id": "6666666666666666",
+        "house_id": "666",
+        "house_price": "100000000",
+        "amount": "1000000",
+        "remaining": "99000000",
+        "timestamp": ""
       }
       return new Promise((resolve, reject) => resolve(result))
     } else {

@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
 
 router.get('/customer/:customer_id', function(req, res) {
   const payload = {
-   "customer_id": req.params.customer_id
+    "customer_id": req.params.customer_id
   }
   return SubmissionService
     .getSubmission(payload, true)
@@ -28,7 +28,7 @@ router.get('/customer/:customer_id', function(req, res) {
 
 router.patch('/:submission_id/approve', function(req, res) {
   const payload = {
-   "submission_id": req.params.submission_id
+    "submission_id": req.params.submission_id
   }
   return SubmissionService
     .approve(payload, true)
