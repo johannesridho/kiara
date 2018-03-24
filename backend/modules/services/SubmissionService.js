@@ -4,6 +4,7 @@ const CONFIG = require('../config')
 const LOGGER = require('../utils/logger.js')
 const Web3Singleton = require("../repositories/Web3Singleton.js")
 const ContractObject = require("../utils/ContractObject")
+const HouseRepo = require("../repositories/HouseRepo.js")
 const SubmissionRepo = require("../repositories/SubmissionRepo.js")
 
 const SOL = './contracts/SmartContract.sol'
@@ -25,7 +26,7 @@ SubmissionService.prototype.submit = (payload, isTest) => {
   return Promise
     .all([
       SubmissionRepo.add(sub, isTest),
-      SubmissionService.prototype.calculateMonthlyAmount(payload, isTest)
+      SubmissionService.prototype.calculateMonthlyAmount(payload, false)
     ])
     .then((proms) => {
       const amount = proms[1].amount
@@ -37,7 +38,24 @@ SubmissionService.prototype.submit = (payload, isTest) => {
 
 SubmissionService.prototype.getSubmission = (payload, isTest) => {
   if (isTest) {
-      return SubmissionRepo.get(payload.customer_id, isTest)
+      return Promise
+        .resolve()
+        .then(() => SubmissionRepo.get(payload.customer_id, isTest))
+        .then((subs) => {
+          return Promise
+            .all([
+              subs,
+              Promise.all(subs.map((sub) => HouseRepo.get(sub.house_id, false)))
+            ])
+        })
+        .then((proms) => {
+          const subs = proms[0]
+          const houses = proms[1]
+          return subs.map((sub, idx) => {
+            sub.house_name = houses[idx].nama
+            return sub
+          })
+        })
     } else {
       // return axios({
       //     url: CONFIG.btn.host + '/credit-submission',
@@ -80,7 +98,7 @@ SubmissionService.prototype.approve = (payload, isTest) => {
 SubmissionService.prototype.calculateMonthlyAmount = (payload, isTest) => {
   if (isTest) {
       const result = {
-        "amount" : "100"
+        "amount" : "1000000"
       }
       return new Promise((resolve, reject) => resolve(result))
     } else {

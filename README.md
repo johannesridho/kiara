@@ -97,7 +97,7 @@
   "email": "eric@cartman.com",
   "nomor_hp": "081666666666",
   "nomor_cif": "i5548261",
-  "house_id": "6",
+  "house_id": "167",
   "house_price": "100000000",
   "interest": "10",
   "duration_month": "240"
@@ -106,9 +106,9 @@
 
 ```json
 {
-  "id" : "6",
+  "id" : "189104172",
   "customer_id" : "6666666666666666",
-  "house_id" : "666",
+  "house_id" : "167",
   "house_price" : "100000000",
   "status" : "pending",
   "amount" : "1000000"
@@ -122,14 +122,17 @@
 ```
 
 ```json
-{
-  "id" : "6",
-  "customer_id" : "6666666666666666",
-  "house_id" : "666",
-  "house_price" : "100000000",
-  "status" : "pending",
-  "amount" : "1000000"
-}
+[
+  {
+    "id" : "189104172",
+    "customer_id" : "6666666666666666",
+    "house_id" : "167",
+    "house_price" : "100000000",
+    "house_name" : "Studio T.35",
+    "status" : "pending",
+    "amount" : "1000000"
+  }
+]
 ```
 
 ```[patch] /submission/:submission_id/approve```
@@ -142,11 +145,11 @@
 {
   "id" : "6",
   "customer_id" : "6666666666666666",
-  "house_id" : "666",
+  "house_id" : "167",
+  "house_name": "Studio T.35",
   "house_price" : "100000000",
   "status" : "approved",
-  "amount" : "1000000",
-  "kode_booking" : ""
+  "amount" : "1000000"
 }
 ```
 
@@ -157,7 +160,7 @@
 ```json
 {
   "customer_id": "6666666666666666",
-  "house_id": "666",
+  "house_id": "167",
   "amount": "1000000"
 }
 ```
@@ -166,7 +169,8 @@
 {
   "id": "6",
   "customer_id": "6666666666666666",
-  "house_id": "666",
+  "house_id": "167",
+  "house_name": "Studio T.35",
   "house_price": "100000000",
   "amount": "1000000",
   "remaining": "99000000",
