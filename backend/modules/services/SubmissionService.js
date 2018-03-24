@@ -13,23 +13,38 @@ SubmissionService.prototype.submit = (payload, isTest) => {
         "house_id" : payload.house_id,
         "house_price" : payload.house_price,
         "status" : "pending",
-        "amount" : "100"
+        "amount" : null
       }
-      return new Promise((resolve, reject) => resolve(result))
-    } else {
-      return axios({
-          url: CONFIG.btn.host + '/credit-submission',
-          method: 'post',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': CONFIG.btn.apikey
-          },
-          data: payload
+      return Promise
+        .all([
+          new Promise((resolve, reject) => resolve(result)),
+          SubmissionService.prototype.calculateMonthlyAmount(payload, isTest)
+        ])
+        .then((proms) => {
+          const amount = proms[1].amount
+          let editedResult = proms[0]
+          editedResult.amount = amount
+          return editedResult
         })
-        .then((response) => response.data.payload)
-        .catch((error) => {
-          error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
-          return {}
+    } else {
+      const result = {
+        "id" : "6",
+        "customer_id" : payload.customer_id,
+        "house_id" : payload.house_id,
+        "house_price" : payload.house_price,
+        "status" : "pending",
+        "amount" : null
+      }
+      return Promise
+        .all([
+          new Promise((resolve, reject) => resolve(result)),
+          SubmissionService.prototype.calculateMonthlyAmount(payload, isTest)
+        ])
+        .then((proms) => {
+          const amount = proms[1].amount
+          let editedResult = proms[0]
+          editedResult.amount = amount
+          return editedResult
         })
     }
 }
@@ -58,7 +73,7 @@ SubmissionService.prototype.getSubmission = (payload, isTest) => {
       //   .then((response) => response.data.payload)
       //   .catch((error) => {
       //     error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
-      //     return {'kode_booking': null}
+      //     return {}
       //   })
     }
 }
@@ -88,8 +103,41 @@ SubmissionService.prototype.approve = (payload, isTest) => {
       //   .then((response) => response.data.payload)
       //   .catch((error) => {
       //     error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
-      //     return {'kode_booking': null}
+      //     return {}
       //   })
+    }
+}
+
+SubmissionService.prototype.calculateMonthlyAmount = (payload, isTest) => {
+  if (isTest) {
+      const result = {
+        "amount" : "100"
+      }
+      return new Promise((resolve, reject) => resolve(result))
+    } else {
+      return axios({
+          url: CONFIG.btn.host + '/credit-simulation',
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': CONFIG.btn.apikey
+          },
+          data: {
+            "nilai_pinjaman": payload.house_price,
+            "interest": payload.interest,
+            "jangka_waktu": payload.duration_month
+          }
+        })
+        .then((response) => response.data.payload)
+        .then((result) => {
+          return {
+            'amount': result.angsuran_perbulan
+          }
+        })
+        .catch((error) => {
+          error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
+          return {}
+        })
     }
 }
 

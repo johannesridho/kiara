@@ -5,6 +5,19 @@ var SubmissionService = require('../../modules/services/SubmissionService.js');
 
 describe('SubmissionService', function () {
 
+  it('calculate monthly amount', function () {
+    const payload = {
+      "house_price": "100000000",
+      "interest": "10",
+      "duration_month": "240"
+    }
+    return SubmissionService
+      .calculateMonthlyAmount(payload, true)
+      .then((result) => {
+        assert('amount' in result)
+      })
+  })
+
   it('post submission success', function () {
     const payload = {
       "customer_id": "6666666666666666",
@@ -18,7 +31,7 @@ describe('SubmissionService', function () {
       "house_id": "6",
       "house_price": "100000000",
       "interest": "10",
-      "duration_month": "240"
+      "duration_month": "120"
     }
     return SubmissionService
       .submit(payload, true)
