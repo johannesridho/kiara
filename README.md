@@ -167,49 +167,68 @@
 
 ```json
 {
-  "id": "6",
+  "id": "35297043",
   "customer_id": "6666666666666666",
   "house_id": "167",
-  "house_name": "Studio T.35",
-  "house_price": "100000000",
+  "house_price": 642468750,
   "amount": "1000000",
-  "remaining": "99000000",
-  "timestamp": ""
+  "remaining": 639468750,
+  "timestamp": "2018-03-24T19:56:47.323Z"
 }
 ```
 
 ```[get] /transaction/:transaction_id```
 
 ```
-[get] /transaction/6
+[get] /transaction/35297043
 ```
 
 ```json
 {
-  "id": "6",
+  "id": "35297043",
   "customer_id": "6666666666666666",
-  "house_id": "666",
-  "house_price": "100000000",
+  "house_id": "167",
+  "house_price": 642468750,
   "amount": "1000000",
-  "remaining": "99000000",
-  "timestamp": ""
+  "remaining": 639468750,
+  "timestamp": "2018-03-24T19:56:47.323Z"
 }
 ```
 
 ```[get] /transaction?customer_id=6666&house_id=167```
 
 ```
-[get] /transaction?customer_id=6666&house_id=167
+[get] /transaction?customer_id=6666666666666666&house_id=167
 ```
 
 ```json
-{
-  "id": "6",
-  "customer_id": "6666",
-  "house_id": "167",
-  "house_price": "100000000",
-  "amount": "1000000",
-  "remaining": "99000000",
-  "timestamp": ""
-}
+[
+  {
+    "id": "35297043",
+    "customer_id": "6666666666666666",
+    "house_id": "167",
+    "house_price": 642468750,
+    "amount": "1000000",
+    "remaining": 639468750,
+    "timestamp": "2018-03-24T19:56:47.323Z"
+  },
+  {
+    "id": "6",
+    "customer_id": "6666666666666666",
+    "house_id": "167",
+    "house_price": 642468750,
+    "amount": 1000000,
+    "remaining": 640468750,
+    "timestamp": "2018-03-24T19:56:41.463Z"
+  },
+  {
+    "id": "7",
+    "customer_id": "6666666666666666",
+    "house_id": "167",
+    "house_price": 642468750,
+    "amount": 1000000,
+    "remaining": 641468750,
+    "timestamp": "2018-03-24T18:56:41.463Z"
+  }
+]
 ```
