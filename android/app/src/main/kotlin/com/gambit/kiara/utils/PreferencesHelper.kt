@@ -1,4 +1,4 @@
-package com.olb.centrio.utils
+package com.gambit.kiara.utils
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,37 +12,35 @@ object PreferencesHelper {
     private val PREF_USER_ID = "pref_user_id"
     private val PREF_ACCESS_TOKEN = "pref_access_token"
 
-    private var preferences: SharedPreferences? = null
+    private lateinit var preferences: SharedPreferences
 
-    var context: Context? = null
-        set(value) {
-            field = value
-            preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        }
+    fun init(context: Context) {
+        preferences = PreferenceManager.getDefaultSharedPreferences(context)
+    }
 
     var userId: String?
-        get() = preferences?.getString(PREF_USER_ID, null)
+        get() = preferences.getString(PREF_USER_ID, null)
         set(value) {
             if (value == null) {
-                preferences?.edit()
+                preferences.edit()
                         ?.remove(PREF_USER_ID)
                         ?.apply()
             } else {
-                preferences?.edit()
+                preferences.edit()
                         ?.putString(PREF_USER_ID, value)
                         ?.apply()
             }
         }
 
     var accessToken: String?
-        get() = preferences?.getString(PREF_ACCESS_TOKEN, null)
+        get() = preferences.getString(PREF_ACCESS_TOKEN, null)
         set(value) {
             if (value == null) {
-                preferences?.edit()
+                preferences.edit()
                         ?.remove(PREF_ACCESS_TOKEN)
                         ?.apply()
             } else {
-                preferences?.edit()
+                preferences.edit()
                         ?.putString(PREF_ACCESS_TOKEN, value)
                         ?.apply()
             }

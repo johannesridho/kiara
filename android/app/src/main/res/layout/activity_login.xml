@@ -8,7 +8,7 @@
     android:gravity="center"
     android:fitsSystemWindows="true">
     <TextView
-        android:id="@+id/pin"
+        android:id="@+id/textPin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="64sp"
@@ -17,17 +17,15 @@
     <View
         android:layout_width="160dp"
         android:layout_height="2dp"
-        android:layout_below="@id/pin"
         android:layout_marginBottom="64dp"
         android:background="@android:color/darker_gray"/>
 
     <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/pin">
+        android:layout_height="wrap_content">
         <TableRow>
             <Button
-                android:id="@+id/keypad1"
+                android:id="@+id/buttonKeypad1"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -38,7 +36,7 @@
                 android:textColor="@android:color/white"/>
 
             <Button
-                android:id="@+id/keypad2"
+                android:id="@+id/buttonKeypad2"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -49,7 +47,7 @@
                 android:textColor="@android:color/white"/>
 
             <Button
-                android:id="@+id/keypad3"
+                android:id="@+id/buttonKeypad3"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -62,7 +60,7 @@
 
         <TableRow>
             <Button
-                android:id="@+id/keypad4"
+                android:id="@+id/buttonKeypad4"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -73,7 +71,7 @@
                 android:textColor="@android:color/white"/>
 
             <Button
-                android:id="@+id/keypad5"
+                android:id="@+id/buttonKeypad5"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -84,7 +82,7 @@
                 android:textColor="@android:color/white"/>
 
             <Button
-                android:id="@+id/keypad6"
+                android:id="@+id/buttonKeypad6"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -98,7 +96,7 @@
 
         <TableRow>
             <Button
-                android:id="@+id/keypad7"
+                android:id="@+id/buttonKeypad7"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -109,7 +107,7 @@
                 android:textColor="@android:color/white"/>
 
             <Button
-                android:id="@+id/keypad8"
+                android:id="@+id/buttonKeypad8"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -120,7 +118,7 @@
                 android:textColor="@android:color/white"/>
 
             <Button
-                android:id="@+id/keypad9"
+                android:id="@+id/buttonKeypad9"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -133,7 +131,7 @@
 
         <TableRow>
             <ImageButton
-                android:id="@+id/keypadBackspace"
+                android:id="@+id/buttonKeypadBackspace"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -142,7 +140,7 @@
                 android:gravity="center"/>
 
             <Button
-                android:id="@+id/keypad0"
+                android:id="@+id/buttonKeypad0"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -153,7 +151,7 @@
                 android:textColor="@android:color/white"/>
 
             <ImageButton
-                android:id="@+id/keypadEnter"
+                android:id="@+id/buttonKeypadEnter"
                 android:layout_width="92dp"
                 android:layout_height="72dp"
                 android:padding="0dp"
@@ -164,7 +162,7 @@
     </TableLayout>
 
     <ImageView
-        android:id="@+id/fingerprint"
+        android:id="@+id/imageFingerprint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
