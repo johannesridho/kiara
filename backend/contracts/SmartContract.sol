@@ -1,4 +1,5 @@
 pragma solidity ^0.4.21;
+pragma experimental ABIEncoderV2;
 
 contract SmartContract {
     string public standard = 'SmartContract 0.1';
