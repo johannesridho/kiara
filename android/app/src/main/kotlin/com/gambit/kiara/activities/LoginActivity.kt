@@ -120,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onAuthSuccess() {
-        PreferencesHelper.userId = "57eca26dd4050d13616131ae"
+        PreferencesHelper.userId = "6666666666666666"
 
         finish()
         MainActivity.start(this)

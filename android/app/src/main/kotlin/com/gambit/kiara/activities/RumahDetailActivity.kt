@@ -15,7 +15,6 @@ import com.gambit.kiara.adapters.GambarPagerAdapter
 import com.gambit.kiara.adapters.RumahListAdapter
 import com.gambit.kiara.models.Rumah
 import kotlinx.android.synthetic.main.activity_rumah_detail.*
-import kotlinx.android.synthetic.main.layout_rumah_item.view.*
 import java.text.NumberFormat
 import java.util.*
 
@@ -77,7 +76,7 @@ class RumahDetailActivity : AppCompatActivity() {
         textPdam.text = if (rumah?.jalurPdam!!) "Ada" else "Tidak ada"
         textTelp.text = if (rumah?.jalurTelp!!) "Ada" else "Tidak ada"
         textSubsidi.text = if (rumah?.subsidi!!) "Ya" else "Tidak"
-        textHarga?.text = "Rp${NumberFormat.getNumberInstance(Locale("id")).format(rumah?.harga)},00"
+        textHarga.text = "Rp${NumberFormat.getNumberInstance(Locale("id")).format(rumah?.harga)},00"
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean =
