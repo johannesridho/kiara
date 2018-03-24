@@ -17,4 +17,14 @@ router.post('/', function(req, res) {
     .then((result) => res.send({result: result}))
 })
 
+
+router.get('/customer/:customer_id', function(req, res) {
+  const payload = {
+   "customer_id": "6666666666666666"
+  }
+  return SubmissionService
+    .getSubmission(payload, true)
+    .then((result) => res.send({result: result}))
+})
+
 module.exports = router

@@ -5,7 +5,7 @@ var SubmissionService = require('../../modules/services/SubmissionService.js');
 
 describe('SubmissionService', function () {
 
-  it('sumbission post success', function () {
+  it('post sumbission success', function () {
     const payload = {
      "nik": "6666666666666666",
      "nama": "eric",
@@ -20,6 +20,21 @@ describe('SubmissionService', function () {
       .submit(payload, true)
       .then((result) => {
         assert('kode_booking' in result)
+      })
+  })
+
+  it('get sumbission success', function () {
+    const payload = {
+     "customer_id": "6666666666666666"
+    }
+    return SubmissionService
+      .getSubmission(payload, true)
+      .then((result) => {
+        assert('house_id' in result)
+        assert('house_price' in result)
+        assert('customer_id' in result)
+        assert('status' in result)
+        assert('amount' in result)
       })
   })
 

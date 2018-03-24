@@ -29,4 +29,32 @@ SubmissionService.prototype.submit = (payload, isTest) => {
     }
 }
 
+SubmissionService.prototype.getSubmission = (payload, isTest) => {
+  if (isTest) {
+      const result = {
+        "customer_id" : payload.customer_id,
+        "house_id" : "666",
+        "house_price" : "100000000",
+        "status" : "pending",
+        "amount" : "1000000",
+      }
+      return new Promise((resolve, reject) => resolve(result))
+    } else {
+      // return axios({
+      //     url: CONFIG.btn.host + '/credit-submission',
+      //     method: 'post',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'apikey': CONFIG.btn.apikey
+      //     },
+      //     data: payload
+      //   })
+      //   .then((response) => response.data.payload)
+      //   .catch((error) => {
+      //     error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
+      //     return {'kode_booking': null}
+      //   })
+    }
+}
+
 module.exports = new SubmissionService()
