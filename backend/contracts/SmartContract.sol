@@ -29,19 +29,20 @@ contract SmartContract {
 
     function SmartContract() {}
 
-    function addOwnership(uint houseId, bytes32 data) {
-        ownerships[msg.sender].push(Ownership({
+    function addOwnership(address accountAddress, uint houseId, bytes32 data) {
+        ownerships[accountAddress].push(Ownership({
             houseId: houseId,
             data: data
         }));
     }
 
-    function getOwnerships(uint[] indexes) public returns (uint[], bytes32[]) {
-        uint[] memory houseIds = new uint[](indexes.length);
-        bytes32[] memory dataArray = new bytes32[](indexes.length);
+    function getOwnerships(address accountAddress) public returns (uint[], bytes32[]) {
+      uint length = ownerships[accountAddress].length;
+      uint[] memory houseIds = new uint[](length);
+        bytes32[] memory dataArray = new bytes32[](length);
 
-        for (uint i = 0; i < indexes.length; i++) {
-            Ownership storage ownership = ownerships[msg.sender][indexes[i]];
+        for (uint i = 0; i < length; i++) {
+            Ownership storage ownership = ownerships[accountAddress][i];
             houseIds[i] = ownership.houseId;
             dataArray[i] = ownership.data;
         }
@@ -49,8 +50,8 @@ contract SmartContract {
         return (houseIds, dataArray);
     }
 
-    function addSubmission(uint houseId, bytes32 status, uint256 price, uint256 monthlyInstallment) {
-        submissions[msg.sender].push(Submission({
+    function addSubmission(address accountAddress, uint houseId, bytes32 status, uint256 price, uint256 monthlyInstallment) {
+        submissions[accountAddress].push(Submission({
             houseId: houseId,
             status: status,
             price: price,
@@ -58,14 +59,15 @@ contract SmartContract {
         }));
     }
 
-    function getSubmissions(uint[] indexes) public constant returns (uint[], bytes32[], uint256[], uint256[]) {
-        uint[] memory houseIds = new uint[](indexes.length);
-        bytes32[] memory statuses = new bytes32[](indexes.length);
-        uint256[] memory prices = new uint[](indexes.length);
-        uint256[] memory monthlyInstallments = new uint[](indexes.length);
+    function getSubmissions(address accountAddress) public constant returns (uint[], bytes32[], uint256[], uint256[]) {
+        uint length = submissions[accountAddress].length;
+        uint[] memory houseIds = new uint[](length);
+        bytes32[] memory statuses = new bytes32[](length);
+        uint256[] memory prices = new uint[](length);
+        uint256[] memory monthlyInstallments = new uint[](length);
 
-        for (uint i = 0; i < indexes.length; i++) {
-          Submission storage submission = submissions[msg.sender][indexes[i]];
+        for (uint i = 0; i < length; i++) {
+          Submission storage submission = submissions[accountAddress][i];
           houseIds[i] = submission.houseId;
           statuses[i] = submission.status;
           prices[i] = submission.price;
