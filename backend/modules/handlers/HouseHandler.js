@@ -12,9 +12,13 @@ router.get('/', function(req, res) {
 
 router.get('/list/:keyword', function(req, res) {
   const keyword = req.params.keyword
-  res.send({
-    result: HouseService.list(keyword)
-  })
+  HouseService
+    .list(keyword)
+    .then((houses) => {
+      return res.send({
+        result: houses
+      })
+    })
 })
 
 module.exports = router
