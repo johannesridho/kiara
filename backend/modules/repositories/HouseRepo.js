@@ -1,6 +1,7 @@
 const Promise = require('bluebird')
 const axios = require('axios')
 const CONFIG = require('../config')
+const LOGGER = require('../utils/logger.js')
 
 var HouseRepo = function () {
 
@@ -84,7 +85,8 @@ var HouseRepo = function () {
         })
         .then((response) => response.data.payload)
         .catch((error) => {
-          console.log(error)
+          error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
+          return []
         })
     }
   }
