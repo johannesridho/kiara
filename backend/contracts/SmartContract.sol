@@ -20,7 +20,7 @@ contract SmartContract {
         }));
     }
 
-    function getOwnerships() public constant returns (Ownership[]) {
-        return ownerships[msg.sender];
+    function getOwnerships(address account) public constant returns (Ownership[]) {
+        return ownerships[account];
     }
 }
