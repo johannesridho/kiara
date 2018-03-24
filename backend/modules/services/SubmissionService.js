@@ -33,7 +33,7 @@ SubmissionService.prototype.getSubmission = (payload, isTest) => {
   if (isTest) {
       const result = {
         "id" : "6",
-        "customer_id" : payload.customer_id,
+        "customer_id" : "" + payload.customer_id,
         "house_id" : "666",
         "house_price" : "100000000",
         "status" : "pending",
@@ -61,7 +61,7 @@ SubmissionService.prototype.getSubmission = (payload, isTest) => {
 SubmissionService.prototype.approve = (payload, isTest) => {
   if (isTest) {
       const result = {
-        "id" : payload.submission_id,
+        "id" : "" + payload.submission_id,
         "customer_id" : "6666666666666666",
         "house_id" : "666",
         "house_price" : "100000000",
