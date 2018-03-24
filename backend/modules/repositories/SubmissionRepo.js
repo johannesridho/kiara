@@ -9,7 +9,7 @@ var SubmissionRepo = function () {
     {
       "id" : "6",
       "customer_id" : "666",
-      "house_id" : "666",
+      "house_id" : "167",
       "house_price" : "100000000",
       "status" : "pending",
       "amount" : "1000000"
