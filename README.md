@@ -196,17 +196,17 @@
 }
 ```
 
-```[get] /transaction?customer_id=6666&house_id=6```
+```[get] /transaction?customer_id=6666&house_id=167```
 
 ```
-[get] /transaction?customer_id=6666&house_id=6
+[get] /transaction?customer_id=6666&house_id=167
 ```
 
 ```json
 {
   "id": "6",
   "customer_id": "6666",
-  "house_id": "6",
+  "house_id": "167",
   "house_price": "100000000",
   "amount": "1000000",
   "remaining": "99000000",
