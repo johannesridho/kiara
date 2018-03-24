@@ -24,27 +24,27 @@ const ContractObject = function (web3, name, contract_path) {
         'gas': this.gasEstimate*2,
       }
       const newContractMethod = (e, contractInstance) => {
-      if (!e) {
-      if(!contractInstance.address) {
-        console.log("Contract transaction send: TransactionHash: " + contractInstance.transactionHash + " waiting to be mined...")
-      } else {
-        console.log("Contract mined! Address: " + contractInstance.address)
-        resolve(contractInstance)
+        if (!e) {
+          if(!contractInstance.address) {
+            console.log("Contract transaction send: TransactionHash: " + contractInstance.transactionHash + " waiting to be mined...")
+          } else {
+            console.log("Contract mined! Address: " + contractInstance.address)
+            resolve(contractInstance)
+          }
+        } else
+        reject(e)
       }
-    } else
-    reject(e)
-  }
-    if ('undefined' === typeof params)
-      this.contract.new(newContractPayload, newContractMethod)
-    else {
-      if (params.length == 1) {
-        this.contract.new(params[0], newContractPayload, newContractMethod)
-      } else
-      if (params.length == 2) {
-        this.contract.new(params[0], params[1], newContractPayload, newContractMethod)
+      if ('undefined' === typeof params)
+        this.contract.new(newContractPayload, newContractMethod)
+      else {
+        if (params.length == 1) {
+          this.contract.new(params[0], newContractPayload, newContractMethod)
+        } else
+        if (params.length == 2) {
+          this.contract.new(params[0], params[1], newContractPayload, newContractMethod)
+        }
       }
-    }
-  })
+    })
   }
 
   this.getContractInstanceFromAddress = (address) => new Promise((resolve, reject) => resolve(this.contract.at(address)))

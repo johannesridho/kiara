@@ -2,8 +2,16 @@ const Promise = require('bluebird')
 const axios = require('axios')
 const CONFIG = require('../config')
 const LOGGER = require('../utils/logger.js')
+const Web3Singleton = require("../repositories/Web3Singleton.js")
+const ContractObject = require("../utils/ContractObject")
+
+const SOL = './contracts/SmartContract.sol'
+const CONTRACT_NAME = 'SmartContract'
+const CONTRACT_ADDRESS = '0xdd6ab28f8622f5ac3a680a944b9cde92e131ed45'
 
 var SubmissionService = function () {}
+
+SubmissionService.prototype.web3Instance = Web3Singleton.getInstance()
 
 SubmissionService.prototype.submit = (payload, isTest) => {
   if (isTest) {
@@ -18,7 +26,7 @@ SubmissionService.prototype.submit = (payload, isTest) => {
       return Promise
         .all([
           new Promise((resolve, reject) => resolve(result)),
-          SubmissionService.prototype.calculateMonthlyAmount(payload, isTest)
+          SubmissionService.prototype.calculateMonthlyAmount(payload, isTest),
         ])
         .then((proms) => {
           const amount = proms[1].amount

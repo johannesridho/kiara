@@ -11,7 +11,7 @@ const Web3Singleton = (function () {
     return {
       web3: web3,
       getAllAccounts: () => web3.eth.accounts,
-      getOwnerships: (address) => web3.eth.getOwnerships(account),
+      getOwnerships: (address) => web3.eth.getOwnerships(address),
       getTransaction: (txHash) => web3.eth.getTransaction(txHash),
     }
   }
