@@ -1,11 +1,29 @@
-const Promise = require('bluebird')
-const CONFIG = require('../config')
+'use strict';
 
-var SettlementService = function () {}
+var assert = require('assert');
+var HouseService = require('../../modules/services/HouseService.js');
 
-SettlementService.prototype.list = (arg) => {
-  const result = [
-    {
+describe('HouseService', function () {
+
+  it('list', function () {
+    const keyword = 'jakarta'
+    return HouseService
+      .list(keyword, true)
+      .then((houses) => {
+        return houses
+          .forEach(r => {
+            assert('images' in r)
+            assert('id_stk_kavling' in r)
+            assert('propinsi' in r)
+            assert('kab_kota' in r)
+            assert('kecamatan' in r)
+            assert('desa_kelurahan' in r)
+          })
+      })
+  })
+
+  it('transform', function () {
+    const input = {
       "id_stk_kavling": 4,
       "id_stk_dev": 0,
       "id_stk_proyek": 1274007,
@@ -66,8 +84,13 @@ SettlementService.prototype.list = (arg) => {
       "created_at": null,
       "updated_at": null
     }
-  ]
-  return result
-}
+    const result = HouseService.transform(input)
+    assert('images' in result)
+    assert('id_stk_kavling' in result)
+    assert('propinsi' in result)
+    assert('kab_kota' in result)
+    assert('kecamatan' in result)
+    assert('desa_kelurahan' in result)
+  })
 
-module.exports = new SettlementService()
+})

@@ -16,6 +16,10 @@ const config = {
       host: process.env.PAPERTRAIL_HOST || 'host',
       port: process.env.PAPERTRAIL_PORT || 'port',
     },
+  },
+  btn: {
+    host: 'http://mortgtech-eval-prod.apigee.net/btn-mortgtech',
+    apikey: '7UDvsFMGq3eMrueLX2ZKyrhiEuzkGGSx'
   }
 }
 
