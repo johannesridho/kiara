@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-const CreditService = require('../services/CreditService.js')
+const SubmissionService = require('../services/SubmissionService.js')
 
 router.get('/', function(req, res) {
   const keyword = req.params.keyword
@@ -10,17 +10,10 @@ router.get('/', function(req, res) {
   })
 })
 
-router.get('/simulate', function(req, res) {
-  const payload = req.body
-  res.send({
-    result: CreditService.simulate(payload)
-  })
-})
-
 router.get('/submit', function(req, res) {
   const payload = req.body
   res.send({
-    result: CreditService.submit(payload)
+    result: SubmissionService.submit(payload)
   })
 })
 
