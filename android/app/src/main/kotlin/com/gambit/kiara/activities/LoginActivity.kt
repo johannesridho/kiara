@@ -1,6 +1,7 @@
 package com.gambit.kiara.activities
 
 import android.annotation.TargetApi
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +22,12 @@ import javax.crypto.KeyGenerator
  * Created by itock on 3/24/2018.
  */
 class LoginActivity : AppCompatActivity() {
+
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(Intent(context, LoginActivity::class.java))
+        }
+    }
 
     private val ANDROID_KEY_STORE = "AndroidKeyStore"
     private val CIPHER_KEY_NAME = "Kiara"
@@ -116,7 +123,7 @@ class LoginActivity : AppCompatActivity() {
         PreferencesHelper.userId = "57eca26dd4050d13616131ae"
 
         finish()
-        startActivity(Intent(this, MainActivity::class.java))
+        MainActivity.start(this)
     }
 
     private enum class ButtonType {

@@ -1,6 +1,7 @@
 package com.gambit.kiara
 
 import android.app.Application
+import com.gambit.kiara.http.WebService
 import com.gambit.kiara.utils.PreferencesHelper
 
 /**
@@ -11,5 +12,7 @@ class Application : Application() {
         super.onCreate()
 
         PreferencesHelper.init(this)
+
+        WebService.init(this)
     }
 }

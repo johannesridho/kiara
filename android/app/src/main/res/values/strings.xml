@@ -11,4 +11,6 @@
     <string name="button_keypad_8">8</string>
     <string name="button_keypad_9">9</string>
     <string name="button_keypad_0">0</string>
+
+    <string name="search_hint">Cari properti</string>
 </resources>
