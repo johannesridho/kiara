@@ -1,9 +1,9 @@
 const Promise = require('bluebird')
 const CONFIG = require('../config')
 
-var SettlementService = function () {}
+var HouseService = function () {}
 
-SettlementService.prototype.list = (arg) => {
+HouseService.prototype.list = (arg) => {
   const result = [
     {
       "id_stk_kavling": 4,
@@ -70,4 +70,4 @@ SettlementService.prototype.list = (arg) => {
   return result
 }
 
-module.exports = new SettlementService()
+module.exports = new HouseService()

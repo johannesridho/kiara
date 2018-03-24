@@ -1,13 +1,13 @@
 'use strict';
 
 var assert = require('assert');
-var SettlementService = require('../../modules/services/SettlementService.js');
+var HouseService = require('../../modules/services/HouseService.js');
 
-describe('SettlementService', function () {
+describe('HouseService', function () {
 
   it('list', function () {
     const keyword = 'jakarta'
-    const result = SettlementService.list(keyword)
+    const result = HouseService.list(keyword)
     const expected = [
       {
         "id_stk_kavling": 4,

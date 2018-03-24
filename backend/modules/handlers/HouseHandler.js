@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-const SettlementService = require('../services/SettlementService.js')
+const HouseService = require('../services/HouseService.js')
 
 router.get('/', function(req, res) {
   const keyword = req.params.keyword
@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 router.get('/list/:keyword', function(req, res) {
   const keyword = req.params.keyword
   res.send({
-    result: SettlementService.list(keyword)
+    result: HouseService.list(keyword)
   })
 })
 
