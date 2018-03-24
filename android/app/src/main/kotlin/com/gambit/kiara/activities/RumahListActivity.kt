@@ -14,14 +14,16 @@ import com.gambit.kiara.adapters.RumahListAdapter
 import com.gambit.kiara.http.Response
 import com.gambit.kiara.http.WebService
 import com.gambit.kiara.models.Rumah
+import com.gambit.kiara.views.RumahItemView
 import kotlinx.android.synthetic.main.activity_rumah_list.*
+import kotlinx.android.synthetic.main.layout_rumah_item.*
 import retrofit2.Call
 import retrofit2.Callback
 
 /**
  * Created by itock on 3/24/2018.
  */
-class RumahListActivity : AppCompatActivity() {
+class RumahListActivity : AppCompatActivity(), RumahItemView.RumahActionListener {
 
     companion object {
         val EXTRA_KEYWORD = "extra_keyword"
@@ -47,6 +49,8 @@ class RumahListActivity : AppCompatActivity() {
         supportActionBar?.title = keyword
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        rumahListAdapter.rumahActionListener = this
+
         recyclerRumahList.layoutManager = LinearLayoutManager(this)
         recyclerRumahList.adapter = rumahListAdapter
 
@@ -61,6 +65,10 @@ class RumahListActivity : AppCompatActivity() {
                 }
                 else -> super.onOptionsItemSelected(item)
             }
+
+    override fun onItemClick(rumahId: Int?, view: View) {
+        RumahDetailActivity.start(this, view, rumahId ?: -1)
+    }
 
     private fun performGetRumahListByKeyword(keyword: String) {
         if (RumahListAdapter.data.isEmpty()) progressLoading.visibility = View.VISIBLE

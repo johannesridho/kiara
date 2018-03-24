@@ -39,6 +39,10 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.MainActivity"/>
         </activity>
 
+        <activity android:name=".activities.RumahDetailActivity" android:label="@string/app_name">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.RumahListActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

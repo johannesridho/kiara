@@ -13,4 +13,27 @@
     <string name="button_keypad_0">0</string>
 
     <string name="search_hint">Cari properti</string>
+
+    <string name="label_cluster">Cluster</string>
+    <string name="label_blok">Blok</string>
+    <string name="label_nomor">Nomor</string>
+    <string name="label_kel">Kelurahan/Desa</string>
+    <string name="label_kec">Kecamatan</string>
+    <string name="label_kota">Kota/Kabupaten</string>
+    <string name="label_propinsi">Propinsi</string>
+    <string name="label_kode_pos">Kode pos</string>
+    <string name="label_detail">Detail properti</string>
+    <string name="label_luas_tanah">Luas tanah</string>
+    <string name="label_luas_bangunan">Luas bangunan</string>
+    <string name="label_lantai">Lantai</string>
+    <string name="label_kamar_tidur">Kamar tidur</string>
+    <string name="label_kamar_mandi">Kamar mandi</string>
+    <string name="label_garasi">Garasi</string>
+    <string name="label_tahun">Tahun dibangun</string>
+    <string name="label_sertifikat">Sertifikat</string>
+    <string name="label_daya">Daya listrik</string>
+    <string name="label_jalur_pdam">Jalur PDAM</string>
+    <string name="label_jalur_telp">Jalur telepon</string>
+    <string name="label_subsidi">Subsidi</string>
+    <string name="label_harga">Harga</string>
 </resources>

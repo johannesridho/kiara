@@ -9,14 +9,18 @@ import com.gambit.kiara.views.RumahItemView
  * Created by itock on 3/24/2018.
  */
 class RumahListAdapter : RecyclerView.Adapter<RumahListAdapter.RumahItemViewHolder>() {
-    companion object {
 
+    companion object {
         val data = arrayListOf<Rumah>()
     }
+
+    var rumahActionListener: RumahItemView.RumahActionListener? = null
+
     override fun getItemCount(): Int = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RumahItemViewHolder {
         val itemView = RumahItemView(parent.context)
+        itemView.actionListener = rumahActionListener
         return RumahItemViewHolder(itemView)
     }
 

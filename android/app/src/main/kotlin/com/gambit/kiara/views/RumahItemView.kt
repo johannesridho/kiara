@@ -2,6 +2,7 @@ package com.gambit.kiara.views
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
 import com.gambit.kiara.R
@@ -28,11 +29,19 @@ class RumahItemView : RelativeLayout {
                     .into(imageGambar)
 
             textNama?.text = rumah?.nama
-            textKota?.text = "${rumah?.kabKota}, ${rumah?.propinsi}"
+            textAlamat?.text = "${rumah?.kabKota}, ${rumah?.propinsi}"
             textHarga?.text = "Rp${NumberFormat.getNumberInstance(Locale("id")).format(rumah?.harga)},00"
         }
 
+    var actionListener: RumahActionListener? = null
+
     private fun init(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.layout_rumah_item, this, true)
+
+        button.setOnClickListener { actionListener?.onItemClick(rumah?.id, this) }
+    }
+
+    interface RumahActionListener {
+        fun onItemClick(rumahId: Int?, view: View)
     }
 }

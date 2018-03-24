@@ -2,10 +2,12 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/button"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
+    android:foreground="?attr/selectableItemBackground"
     app:cardUseCompatPadding="true">
 
     <android.support.constraint.ConstraintLayout
@@ -17,11 +19,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
+            android:transitionName="gambar"
             app:layout_constraintDimensionRatio="5:3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:color/darker_gray" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textNama"
@@ -32,13 +34,14 @@
             android:layout_marginTop="8dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:transitionName="nama"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageGambar"
             tools:text="Nama" />
 
         <TextView
-            android:id="@+id/textKota"
+            android:id="@+id/textAlamat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -63,7 +66,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textKota"
+            app:layout_constraintTop_toBottomOf="@+id/textAlamat"
             tools:text="Harga" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
