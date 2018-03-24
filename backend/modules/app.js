@@ -15,9 +15,11 @@ app.use(cookieParser())
 
 var routes = require('./handlers/routes.js')
 var ExampleHandler = require('./handlers/ExampleHandler.js')
+var SettlementHandler = require('./handlers/SettlementHandler.js')
 
 app.use('/', routes)
 app.use('/example', ExampleHandler)
+app.use('/settlement', SettlementHandler)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
