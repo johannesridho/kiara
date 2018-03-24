@@ -89,20 +89,29 @@
 
 ```json
 {
-  "nik": "6666666666666666",
+  "customer_id": "6666666666666666",
   "nama": "eric",
   "tgl_lahir": "01-01-2018",
   "nama_ibu_kandung": "cartman",
   "pendapatan": 1000000,
   "email": "eric@cartman.com",
   "nomor_hp": "081666666666",
-  "nomor_cif": "i5548261"
+  "nomor_cif": "i5548261",
+  "house_id": "6",
+  "house_price": "100000000",
+  "interest": "10",
+  "duration_month": "240"
 }
 ```
 
 ```json
 {
-  "kode_booking" : "6666666666"
+  "id" : "6",
+  "customer_id" : "6666666666666666",
+  "house_id" : "666",
+  "house_price" : "100000000",
+  "status" : "pending",
+  "amount" : "1000000"
 }
 ```
 
@@ -136,7 +145,8 @@
   "house_id" : "666",
   "house_price" : "100000000",
   "status" : "approved",
-  "amount" : "1000000"
+  "amount" : "1000000",
+  "kode_booking" : ""
 }
 ```
 

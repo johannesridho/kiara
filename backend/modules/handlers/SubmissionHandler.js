@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   const payload = req.body
   return SubmissionService
-    .submit(payload)
+    .submit(payload, true)
     .then((result) => res.send({result: result}))
 })
 
