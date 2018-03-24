@@ -10,11 +10,11 @@ router.get('/', function(req, res) {
   })
 })
 
-router.get('/submit', function(req, res) {
+router.post('/', function(req, res) {
   const payload = req.body
-  res.send({
-    result: SubmissionService.submit(payload)
-  })
+  return SubmissionService
+    .submit(payload)
+    .then((result) => res.send({result: result}))
 })
 
 module.exports = router
