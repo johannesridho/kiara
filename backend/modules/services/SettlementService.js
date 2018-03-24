@@ -1,13 +1,10 @@
-# kiara
+const Promise = require('bluebird')
+const CONFIG = require('../config')
 
+var SettlementService = function () {}
 
-## Settlement API
-
-* [get] /settlement/list/:keyword
-
-```json
-{
-  "result": [
+SettlementService.prototype.list = (arg) => {
+  const result = [
     {
       "id_stk_kavling": 4,
       "id_stk_dev": 0,
@@ -70,5 +67,7 @@
       "updated_at": null
     }
   ]
+  return result
 }
-```
+
+module.exports = new SettlementService()
