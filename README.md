@@ -1,9 +1,51 @@
 # kiara
 
+## Credit API
+
+```[get] /credit/simulate```
+
+```json
+{
+   "nilai_pinjaman": "100000000",
+   "interest": "10",
+   "jangka_waktu": 1
+}
+```
+
+```json
+{
+  "result": {
+    "angsuran_perbulan": "100833333.33"
+  }
+}
+```
+
+```[get] /credit/submit```
+
+```json
+{
+   "nik": "1234567891234567",
+   "nama": "Ade",
+   "tgl_lahir": "01-01-2018",
+   "nama_ibu_kandung": "ibu",
+   "pendapatan": 10000,
+   "email": "ade@yahoo.com",
+   "nomor_hp": "082123155617",
+   "nomor_cif": "1116635e"
+}
+```
+
+```json
+{
+  "result": {
+    "kode_booking": "1234556784"
+  }
+}
+```
 
 ## Settlement API
 
-* [get] /settlement/list/:keyword
+```[get] /settlement/list/:keyword```
 
 ```json
 {
