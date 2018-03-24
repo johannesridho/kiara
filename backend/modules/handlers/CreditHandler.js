@@ -17,4 +17,11 @@ router.get('/simulate', function(req, res) {
   })
 })
 
+router.get('/submit', function(req, res) {
+  const payload = req.body
+  res.send({
+    result: CreditService.submit(payload)
+  })
+})
+
 module.exports = router
