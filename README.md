@@ -43,20 +43,20 @@
 }
 ```
 
-## Settlement API
+## House API
 
-```[get] /settlement/list/:keyword```
+```[get] /house/list/:keyword```
 
 ```json
 {
   "result": [
     {
-      "id_stk_kavling": 4,
+      "id_stk_kavling": 1,
       "id_stk_dev": 0,
       "id_stk_proyek": 1274007,
       "id_tipe_rumah": 0,
       "nama": "2BR",
-      "harga": 1846547512,
+      "harga": 1831727707,
       "jenis": 3,
       "gbr1": "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/395151f9-75cc-4eb0-8b8e-9061e708e1fd.jpeg",
       "gbr2": "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/3e919f08-998c-49f9-98de-9287bea07299.jpeg",
@@ -65,8 +65,8 @@
       "gbr5": "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/9c63704d-c497-4c44-aeea-853cb9e21f7f.jpeg",
       "deskripsi": "Dokumen : Sertifikat Hak Milik atas Satuan Rumah Susun (SHMSRS)\nFasilitas :Parking Lot, Sky Lounge, Tree Pit, Fitness Centre, ATM Gallery, Minimarket, Triple Play, (TV Cable, Telephone, Internet) 24 Hours Security, Acces Card Security System.\nFasilitas ",
       "subsidi": false,
-      "luas_tanah": 50,
-      "luas_bangunan": 50,
+      "luas_tanah": 51,
+      "luas_bangunan": 51,
       "tahun_bangun": 2015,
       "lantai": "15",
       "jalur_pdam": true,
@@ -79,7 +79,7 @@
       "alamat": "JL. KALIBATA RAYA NO. 22",
       "klaster": "MAHAGONY (TOWER 4)",
       "blok": "LT 15",
-      "no": "16",
+      "no": "07",
       "kodepos": 12740,
       "id_propinsi": 31,
       "id_kab_kota": 3174,
@@ -92,7 +92,7 @@
       "status_pengajuan": 4,
       "id_booking": "",
       "jml_dilihat": 0,
-      "keyword": "kav17053110494226693, 2br, pt. pardika wisthi sarana, woodland park residence apartemen, 2br, dki jakarta, kota adm. jakarta selatan, pancoran, kalibata",
+      "keyword": "kav17053110494136275, 2br, pt. pardika wisthi sarana, woodland park residence apartemen, 2br, dki jakarta, kota adm. jakarta selatan, pancoran, kalibata",
       "tgl_insert": null,
       "jenis_lama": "",
       "subsidi_lama": "",
@@ -109,7 +109,18 @@
       "kategori_agunan": "",
       "jenis_lelang": false,
       "created_at": null,
-      "updated_at": null
+      "updated_at": null,
+      "images": [
+        "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/395151f9-75cc-4eb0-8b8e-9061e708e1fd.jpeg",
+        "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/3e919f08-998c-49f9-98de-9287bea07299.jpeg",
+        "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/c0f30a08-0fc1-4762-a3d4-50010a0c8558.jpeg",
+        "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/2d4816bf-2215-409a-a395-53c243b3fe5f.jpeg",
+        "https://www.btnproperti.co.id/cdn1/images/tipe-rumah/20170531/medium/9c63704d-c497-4c44-aeea-853cb9e21f7f.jpeg"
+      ],
+      "propinsi": "dki jakarta",
+      "kab_kota": "jakarta selatan",
+      "kecamatan": "pancoran",
+      "desa_kelurahan": "kalibata"
     }
   ]
 }
