@@ -2,21 +2,37 @@ const Promise = require('bluebird')
 const axios = require('axios')
 const CONFIG = require('../config')
 const LOGGER = require('../utils/logger.js')
+const HouseRepo = require("../repositories/HouseRepo.js")
+const TransactionRepo = require('../repositories/TransactionRepo.js')
 
 var TransactionService = function () {}
 
 TransactionService.prototype.submit = (payload, isTest) => {
   if (isTest) {
       const result = {
-        "id": "6",
-        "customer_id": "6666666666666666",
-        "house_id": "666",
+        "id": "" + (Math.floor(Math.random() * 1000000000)),
+        "customer_id": payload.customer_id,
+        "house_id": payload.house_id,
         "house_price": "100000000",
-        "amount": "1000000",
+        "amount": payload.amount,
         "remaining": "99000000",
-        "timestamp": ""
+        "timestamp": new Date().toISOString()
       }
-      return new Promise((resolve, reject) => resolve(result))
+      return Promise
+        .resolve()
+        .then(() => HouseRepo.get(payload.house_id, isTest))
+        .then(() => Promise.all([
+          HouseRepo.get(payload.house_id, false),
+          TransactionRepo.getByCustomerHouseId(payload.house_id, payload.customer_id, isTest)
+        ]))
+        .then((proms) => {
+          const house = proms[0]
+          const txs = proms[1]
+          const lastRemaining = (txs.length > 0) ? txs[0].remaining : house.harga
+          result.house_price = house.harga
+          result.remaining = lastRemaining - payload.amount
+          return TransactionRepo.add(result, isTest)
+        })
     } else {
       // return axios({
       //     url: CONFIG.btn.host + '/credit-Transaction',
@@ -37,16 +53,7 @@ TransactionService.prototype.submit = (payload, isTest) => {
 
 TransactionService.prototype.getTransaction = (payload, isTest) => {
   if (isTest) {
-      const result = {
-        "id": "" + payload.transaction_id,
-        "customer_id": "6666666666666666",
-        "house_id": "666",
-        "house_price": "100000000",
-        "amount": "1000000",
-        "remaining": "99000000",
-        "timestamp": ""
-      }
-      return new Promise((resolve, reject) => resolve(result))
+      return TransactionRepo.get(payload.transaction_id, isTest)
     } else {
       // return axios({
       //     url: CONFIG.btn.host + '/credit-submission',
@@ -67,16 +74,7 @@ TransactionService.prototype.getTransaction = (payload, isTest) => {
 
 TransactionService.prototype.getByCustomerHouseId = (payload, isTest) => {
   if (isTest) {
-      const result = {
-        "id": "",
-        "customer_id": payload.customer_id,
-        "house_id": payload.house_id,
-        "house_price": "100000000",
-        "amount": "1000000",
-        "remaining": "99000000",
-        "timestamp": ""
-      }
-      return new Promise((resolve, reject) => resolve(result))
+      return TransactionRepo.getByCustomerHouseId(payload.house_id, payload.customer_id, isTest)
     } else {
       // return axios({
       //     url: CONFIG.btn.host + '/credit-submission',
