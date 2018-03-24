@@ -45,6 +45,12 @@ class MainActivity : AppCompatActivity() {
         performGetSubmissionListByCustomerId(PreferencesHelper.userId!!)
     }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        performGetSubmissionListByCustomerId(PreferencesHelper.userId!!)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
 

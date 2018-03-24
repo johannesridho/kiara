@@ -8,13 +8,20 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.NavUtils
 import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.gambit.kiara.R
 import com.gambit.kiara.adapters.GambarPagerAdapter
 import com.gambit.kiara.adapters.RumahListAdapter
+import com.gambit.kiara.http.WebService
 import com.gambit.kiara.models.Rumah
+import com.gambit.kiara.utils.PreferencesHelper
 import kotlinx.android.synthetic.main.activity_rumah_detail.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.NumberFormat
 import java.util.*
 
@@ -77,6 +84,8 @@ class RumahDetailActivity : AppCompatActivity() {
         textTelp.text = if (rumah?.jalurTelp!!) "Ada" else "Tidak ada"
         textSubsidi.text = if (rumah?.subsidi!!) "Ya" else "Tidak"
         textHarga.text = "Rp${NumberFormat.getNumberInstance(Locale("id")).format(rumah?.harga)},00"
+
+        buttonApply.setOnClickListener { performCreateSubmission(PreferencesHelper.userId!!, rumah?.id!!, rumah?.harga!!, 10, 240) }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean =
@@ -87,4 +96,16 @@ class RumahDetailActivity : AppCompatActivity() {
                 }
                 else -> super.onOptionsItemSelected(item)
             }
+
+    private fun performCreateSubmission(customerId: String, houseId: Int, housePrice: Long, interest: Int, duration: Int) {
+        WebService.services.createSubmission(customerId, houseId, housePrice, interest, duration).enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                Log.e("@@@", t?.message)
+            }
+
+            override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                finish()
+            }
+        })
+    }
 }

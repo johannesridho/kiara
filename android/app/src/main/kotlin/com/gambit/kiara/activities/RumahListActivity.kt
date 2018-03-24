@@ -16,7 +16,6 @@ import com.gambit.kiara.http.WebService
 import com.gambit.kiara.models.Rumah
 import com.gambit.kiara.views.RumahItemView
 import kotlinx.android.synthetic.main.activity_rumah_list.*
-import kotlinx.android.synthetic.main.layout_rumah_item.*
 import retrofit2.Call
 import retrofit2.Callback
 

@@ -39,4 +39,5 @@
     <string name="label_jalur_telp">Jalur telepon</string>
     <string name="label_subsidi">Subsidi</string>
     <string name="label_harga">Harga</string>
+    <string name="button_apply">Kirim aplikasi</string>
 </resources>
