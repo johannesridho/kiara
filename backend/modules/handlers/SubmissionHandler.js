@@ -17,13 +17,21 @@ router.post('/', function(req, res) {
     .then((result) => res.send({result: result}))
 })
 
-
 router.get('/customer/:customer_id', function(req, res) {
   const payload = {
-   "customer_id": "6666666666666666"
+   "customer_id": req.params.customer_id
   }
   return SubmissionService
     .getSubmission(payload, true)
+    .then((result) => res.send({result: result}))
+})
+
+router.patch('/:submission_id/approve', function(req, res) {
+  const payload = {
+   "submission_id": req.params.submission_id
+  }
+  return SubmissionService
+    .approve(payload, true)
     .then((result) => res.send({result: result}))
 })
 
