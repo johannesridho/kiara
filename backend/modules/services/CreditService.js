@@ -10,4 +10,11 @@ CreditService.prototype.simulate = (arg) => {
   return result
 }
 
+CreditService.prototype.submit = (arg) => {
+  const result = {
+    "kode_booking" : "1234556784"
+  }
+  return result
+}
+
 module.exports = new CreditService()
