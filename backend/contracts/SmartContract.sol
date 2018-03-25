@@ -36,7 +36,7 @@ contract SmartContract {
         }));
     }
 
-    function getOwnerships(address accountAddress) public returns (uint[], bytes32[]) {
+    function getOwnerships(address accountAddress) public constant returns (uint[], bytes32[]) {
       uint length = ownerships[accountAddress].length;
       uint[] memory houseIds = new uint[](length);
         bytes32[] memory dataArray = new bytes32[](length);
