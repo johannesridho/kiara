@@ -2,10 +2,19 @@ const Promise = require('bluebird')
 const axios = require('axios')
 const CONFIG = require('../config')
 const LOGGER = require('../utils/logger.js')
+const Web3Singleton = require("../repositories/Web3Singleton.js")
+const ContractObject = require("../utils/ContractObject")
 const HouseRepo = require("../repositories/HouseRepo.js")
 const TransactionRepo = require('../repositories/TransactionRepo.js')
 
+const SOL = './contracts/SmartContract.sol'
+const CONTRACT_NAME = 'SmartContract'
+const CONTRACT_ADDRESS = '0xdd6ab28f8622f5ac3a680a944b9cde92e131ed45'
+const USER_ADDRESS = '0x7e5f4552091a69125d5dfcb7b8c2659029395bdf'
+
 var TransactionService = function () {}
+
+TransactionService.prototype.web3Instance = Web3Singleton.getInstance()
 
 TransactionService.prototype.submit = (payload, isTest) => {
   if (isTest) {
@@ -31,6 +40,18 @@ TransactionService.prototype.submit = (payload, isTest) => {
           const lastRemaining = (txs.length > 0) ? txs[0].remaining : house.harga
           result.house_price = house.harga
           result.remaining = lastRemaining - payload.amount
+          if (result.remaining <= 0) {
+            const contractObject = new ContractObject(this.web3Instance.web3, CONTRACT_NAME, SOL)
+            return contractObject
+              .getContractInstanceFromAddress(CONTRACT_ADDRESS)
+              .then((contractInstance) => {
+                return contractInstance.addOwnership(USER_ADDRESS, result.house_id, 'approved', result.house_price, result.amount)
+              })
+              .then((result) => {
+                console.log(result)
+                return parseFloat(result[0]).toFixed(2)
+              })
+          }
           return TransactionRepo.add(result, isTest)
         })
     } else {
