@@ -17,8 +17,11 @@
     <string name="label_status">Status:</string>
     <string name="label_monthly">/ bulan</string>
 
+    <string name="label_total">Harga properti</string>
+    <string name="label_remaining">Sisa pembayaran</string>
     <string name="label_transaction">Pembayaran sejumlah</string>
     <string name="label_timestamp">pada tanggal</string>
+    <string name="button_pay">Buat pembayaran</string>
 
     <string name="label_cluster">Cluster</string>
     <string name="label_blok">Blok</string>

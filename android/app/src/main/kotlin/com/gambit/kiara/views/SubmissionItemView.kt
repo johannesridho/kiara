@@ -32,10 +32,10 @@ class SubmissionItemView : RelativeLayout {
     private fun init(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.layout_submission_item, this, true)
 
-        button.setOnClickListener { actionListener?.onItemClick(submission?.houseId!!, submission?.houseName!!) }
+        button.setOnClickListener { actionListener?.onItemClick(submission!!) }
     }
 
     interface SubmissionActionListener {
-        fun onItemClick(houseId: Int, houseName: String)
+        fun onItemClick(submission: Submission)
     }
 }

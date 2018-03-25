@@ -82,8 +82,8 @@ class MainActivity : AppCompatActivity(), SubmissionItemView.SubmissionActionLis
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onItemClick(houseId: Int, houseName: String) {
-        TransactionListActivity.start(this, houseId, houseName)
+    override fun onItemClick(submission: Submission) {
+        TransactionListActivity.start(this, submission.houseId!!, submission.houseName!!, submission.monthly)
     }
 
     private fun performGetSubmissionListByCustomerId(customerId: String) {

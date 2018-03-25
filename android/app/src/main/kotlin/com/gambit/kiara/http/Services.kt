@@ -24,4 +24,8 @@ interface Services {
     @FormUrlEncoded
     @POST("submission")
     fun createSubmission(@Field("customer_id") customerId: String, @Field("house_id") houseId: Int, @Field("house_price") housePrice: Long, @Field("interest") interest: Int, @Field("duration_month") duration: Int) : Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("transaction")
+    fun createTransaction(@Field("customer_id") customerId: String, @Field("house_id") houseId: Int, @Field("amount") amount: Double) : Call<ResponseBody>
 }

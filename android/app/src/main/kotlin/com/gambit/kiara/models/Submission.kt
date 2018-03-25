@@ -13,8 +13,6 @@ class Submission {
 
     var houseName: String? = null
 
-    var housePrice: Long = 0
-
     var status: String? = null
 
     @SerializedName("amount")

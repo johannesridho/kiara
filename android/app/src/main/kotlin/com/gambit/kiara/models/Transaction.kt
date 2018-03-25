@@ -15,7 +15,7 @@ class Transaction {
 
     var amount: Double = 0.0
 
-    var remaining: Long = 0
+    var remaining: Double = 0.0
 
     var timestamp: Date? = null
 }
