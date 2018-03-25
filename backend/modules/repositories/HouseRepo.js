@@ -1,12 +1,13 @@
 const Promise = require('bluebird')
+const axios = require('axios')
 const CONFIG = require('../config')
+const LOGGER = require('../utils/logger.js')
 
-var SettlementService = function () {}
+var HouseRepo = function () {
 
-SettlementService.prototype.list = (arg) => {
-  const result = [
+  this.items = [
     {
-      "id_stk_kavling": 4,
+      "id_stk_kavling": 167,
       "id_stk_dev": 0,
       "id_stk_proyek": 1274007,
       "id_tipe_rumah": 0,
@@ -67,7 +68,62 @@ SettlementService.prototype.list = (arg) => {
       "updated_at": null
     }
   ]
-  return result
+
+  this.get = (houseId, isTest) => {
+    if (isTest) {
+      return new Promise((resolve, reject) => {
+        const items = this.items.filter((item) => item.id_stk_kavling == houseId)
+        const result = (items.length > 0) ? items[0] : {}
+        resolve(result)
+      })
+    } else {
+      return axios({
+          url: CONFIG.btn.host + '/house-list',
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': CONFIG.btn.apikey
+          },
+          data: {
+            keyword: 'jakarta'
+          }
+        })
+        .then((response) => response.data.payload.filter((item) => {
+          return item.id_stk_kavling == houseId
+        }))
+        .then((items) => {
+          const result = (items.length > 0) ? items[0] : {}
+          return result
+        })
+        .catch((error) => {
+          error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
+          return []
+        })
+    }
+  }
+
+  this.list = (keyword, isTest) => {
+    if (isTest) {
+      return new Promise((resolve, reject) => resolve(this.items))
+    } else {
+      return axios({
+          url: CONFIG.btn.host + '/house-list',
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': CONFIG.btn.apikey
+          },
+          data: {
+            keyword: 'jakarta'
+          }
+        })
+        .then((response) => response.data.payload)
+        .catch((error) => {
+          error.response.data.payload.errors.forEach(err => LOGGER.error(err.message))
+          return []
+        })
+    }
+  }
 }
 
-module.exports = new SettlementService()
+module.exports = new HouseRepo()

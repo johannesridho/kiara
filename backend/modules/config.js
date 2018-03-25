@@ -1,7 +1,8 @@
-require('dotenv').config()
-
 const config = {
   server: {},
+  eth: {
+    host: process.env.ETH_HOST || 'http://localhost:8545',
+  },
   db: {
     host: process.env.DB_HOST || '',
     port: process.env.DB_PORT || '',
@@ -16,6 +17,10 @@ const config = {
       host: process.env.PAPERTRAIL_HOST || 'host',
       port: process.env.PAPERTRAIL_PORT || 'port',
     },
+  },
+  btn: {
+    host: 'http://mortgtech-eval-prod.apigee.net/btn-mortgtech',
+    apikey: '7UDvsFMGq3eMrueLX2ZKyrhiEuzkGGSx'
   }
 }
 
