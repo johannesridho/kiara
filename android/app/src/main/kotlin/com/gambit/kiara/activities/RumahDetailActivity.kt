@@ -2,11 +2,13 @@ package com.gambit.kiara.activities
 
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.NavUtils
 import android.support.v4.util.Pair
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
@@ -104,7 +106,14 @@ class RumahDetailActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
-                finish()
+                AlertDialog.Builder(this@RumahDetailActivity)
+                        .setTitle("Aplikasi Anda telah terkirim.")
+                        .setPositiveButton("OK", object : DialogInterface.OnClickListener {
+                            override fun onClick(p0: DialogInterface?, p1: Int) {
+                                finish()
+                            }
+                        })
+                        .show()
             }
         })
     }
