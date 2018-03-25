@@ -51,7 +51,7 @@ describe('TransactionService', function () {
     return TransactionService
       .getByCustomerHouseId(payload, true)
       .then((results) => {
-        console.log(results)
+        // console.log(results)
         assert('id' in results[0])
         assert('customer_id' in results[0])
         assert('house_id' in results[0])
