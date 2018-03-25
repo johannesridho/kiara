@@ -27,6 +27,15 @@ var TransactionRepo = function () {
       "amount": 1000000,
       "remaining": 642468750-1000000,
       "timestamp": now2.toISOString()
+    },
+    {
+      "id": "8",
+      "customer_id": "6666666666666666",
+      "house_id": "1",
+      "house_price": 1831727707,
+      "amount": 1000000,
+      "remaining": 1831727707-1000000,
+      "timestamp": now.toISOString()
     }
   ]
 
