@@ -16,6 +16,7 @@ import com.gambit.kiara.http.Response
 import com.gambit.kiara.http.WebService
 import com.gambit.kiara.models.Submission
 import com.gambit.kiara.utils.PreferencesHelper
+import com.gambit.kiara.views.SubmissionItemView
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +24,7 @@ import retrofit2.Callback
 /**
  * Created by itock on 3/24/2018.
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SubmissionItemView.SubmissionActionListener {
 
     companion object {
         fun start(context: Context) {
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
+
+        submissionListAdapter.submissionActionListener = this
 
         recyclerSubmissionList.layoutManager = LinearLayoutManager(this)
         recyclerSubmissionList.adapter = submissionListAdapter
@@ -77,6 +80,10 @@ class MainActivity : AppCompatActivity() {
         searchView?.setSearchableInfo(searchManager.getSearchableInfo(componentName))
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onItemClick(houseId: Int, houseName: String) {
+        TransactionListActivity.start(this, houseId, houseName)
     }
 
     private fun performGetSubmissionListByCustomerId(customerId: String) {

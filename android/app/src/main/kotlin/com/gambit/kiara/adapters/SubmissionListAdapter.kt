@@ -11,11 +11,13 @@ import com.gambit.kiara.views.SubmissionItemView
 class SubmissionListAdapter : RecyclerView.Adapter<SubmissionListAdapter.SubmissionItemViewHolder>() {
 
     var data = arrayListOf<Submission>()
+    var submissionActionListener: SubmissionItemView.SubmissionActionListener? = null
 
     override fun getItemCount(): Int = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubmissionItemViewHolder {
         val itemView = SubmissionItemView(parent.context)
+        itemView.actionListener = submissionActionListener
         return SubmissionItemViewHolder(itemView)
     }
 

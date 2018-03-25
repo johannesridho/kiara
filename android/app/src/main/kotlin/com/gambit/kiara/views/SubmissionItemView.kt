@@ -24,7 +24,7 @@ class SubmissionItemView : RelativeLayout {
 
             textHouseName.text = submission?.houseName
             textStatus.text = submission?.status
-            textMonthly.text = "Rp${NumberFormat.getNumberInstance(Locale("id")).format(submission?.monthly)},00"
+            textMonthly.text = "Rp${NumberFormat.getNumberInstance(Locale("id")).format(submission?.monthly?.toLong())},00"
         }
 
     var actionListener: SubmissionActionListener? = null
@@ -32,10 +32,10 @@ class SubmissionItemView : RelativeLayout {
     private fun init(context: Context) {
         LayoutInflater.from(context).inflate(R.layout.layout_submission_item, this, true)
 
-        button.setOnClickListener { actionListener?.onItemClick() }
+        button.setOnClickListener { actionListener?.onItemClick(submission?.houseId!!, submission?.houseName!!) }
     }
 
     interface SubmissionActionListener {
-        fun onItemClick()
+        fun onItemClick(houseId: Int, houseName: String)
     }
 }

@@ -1,5 +1,7 @@
 package com.gambit.kiara.models
 
+import java.util.*
+
 /**
  * Created by itock on 3/25/2018.
  */
@@ -11,7 +13,9 @@ class Transaction {
 
     var housePrice: Long = 0
 
-    var amount: Long = 0
+    var amount: Double = 0.0
 
     var remaining: Long = 0
+
+    var timestamp: Date? = null
 }

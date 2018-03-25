@@ -9,6 +9,8 @@ class Submission {
 
     var id: String? = null
 
+    var houseId: Int? = null
+
     var houseName: String? = null
 
     var housePrice: Long = 0
